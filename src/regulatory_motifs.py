@@ -16,3 +16,10 @@ def d(pattern, string):
             shortest = distance
 
     return shortest
+
+
+def motif_d(pattern, motifs):
+    total = 0
+    for motif in motifs:
+        total += d(pattern, motif)
+    return total
