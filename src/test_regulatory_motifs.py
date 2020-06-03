@@ -1,4 +1,4 @@
-from regulatory_motifs import d, motif_d
+from regulatory_motifs import d, motif_d, get_median_strings
 
 
 def test_d():
@@ -13,3 +13,11 @@ def test_motif_d():
     dna = {'TTACCTTAAC', 'GATATCTGTC', 'ACGGCGTTCG', 'CCCTAAAGAG', 'CGTCAGAGGT'}
     distance = motif_d(pattern, dna)
     assert distance == 5
+
+
+def test_get_median_strings():
+    motifs = {'CTCGATGAGTAGGAAAGTAGTTTCACTGGGCGAACCACCCCGGCGCTAATCCTAGTGCCC',
+              'GCAATCCTACCCGAGGCCACATATCAGTAGGAACTAGAACCACCACGGGTGGCTAGTTTC',
+              'GGTGTTGAACCACGGGGTTAGTTTCATCTATTGTAGGAATCGGCTTCAAATCCTACACAG'}
+    median_strings = get_median_strings(7, motifs)
+    print(median_strings)
