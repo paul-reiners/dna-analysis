@@ -1,5 +1,3 @@
-import math
-
 from regulatory_motifs import d, motif_d, get_median_strings, pr, compute_entropy, get_consensus_strings
 
 
@@ -21,8 +19,9 @@ def test_get_median_strings():
     motifs = {'CTCGATGAGTAGGAAAGTAGTTTCACTGGGCGAACCACCCCGGCGCTAATCCTAGTGCCC',
               'GCAATCCTACCCGAGGCCACATATCAGTAGGAACTAGAACCACCACGGGTGGCTAGTTTC',
               'GGTGTTGAACCACGGGGTTAGTTTCATCTATTGTAGGAATCGGCTTCAAATCCTACACAG'}
-    median_strings = get_median_strings(7, motifs)
-    print(median_strings)
+    computed_median_strings = set(get_median_strings(7, motifs))
+    expected_median_strings = {'AATCCTA', 'GAACCAC', 'GTAGGAA'}
+    assert computed_median_strings == expected_median_strings
 
 
 def test_pr():
@@ -61,3 +60,12 @@ def test_get_consensus_strings():
                                   'AGGCTA', 'AAGTTA', 'ACGTTA', 'AGGTTA'}
 
     assert computed_consensus_strings == expected_consensus_strings
+
+
+def test_get_consensus_strings_2():
+    probs = {'A': [0.4, 0.3, 0.0, 0.1, 0.0, 0.9],
+             'C': [0.2, 0.3, 0.0, 0.4, 0.0, 0.1],
+             'G': [0.1, 0.3, 1.0, 0.1, 0.5, 0.0],
+             'T': [0.3, 0.1, 0.0, 0.4, 0.5, 0.0]}
+    computed_consensus_strings = set(get_consensus_strings(probs))
+    print(computed_consensus_strings)
