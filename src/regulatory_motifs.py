@@ -1,3 +1,4 @@
+import math
 from itertools import product
 
 
@@ -44,3 +45,22 @@ def get_median_strings(k, motifs):
             median_strings.append(k_mer_str)
 
     return median_strings
+
+
+def pr(pattern, profile):
+    prob = 1.0
+    for i in range(len(pattern)):
+        nucleotide = pattern[i]
+        prob *= profile[nucleotide][i]
+
+    return prob
+
+
+def compute_entropy(probs):
+    eps = 0.01
+    entropy = 0.0
+    for prob in probs:
+        if prob >= eps:
+            entropy += -1 * prob * math.log(prob, 2)
+
+    return entropy
