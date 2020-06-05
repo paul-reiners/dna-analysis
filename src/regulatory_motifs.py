@@ -1,3 +1,4 @@
+import itertools
 import math
 from itertools import product
 
@@ -27,6 +28,23 @@ def motif_d(pattern, motifs):
     for motif in motifs:
         total += d(pattern, motif)
     return total
+
+
+def get_consensus_strings(profile_matrix):
+    n = len(profile_matrix['A'])
+    epsilon = 0.01
+    consensus_choices = []
+    for i in range(n):
+        max_prob = max(profile_matrix['A'][i], profile_matrix['C'][i], profile_matrix['T'][i], profile_matrix['G'][i])
+        position_consensus = ''
+        nucleotides = 'ACTG'
+        for nucleotide in nucleotides:
+            if abs(profile_matrix[nucleotide][i] - max_prob) < epsilon:
+                position_consensus += nucleotide
+        consensus_choices.append(position_consensus)
+    prod = itertools.product(*consensus_choices)
+
+    return map(lambda lst: ''.join(lst), prod)
 
 
 def get_median_strings(k, motifs):

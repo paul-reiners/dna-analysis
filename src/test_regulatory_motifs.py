@@ -1,6 +1,6 @@
 import math
 
-from regulatory_motifs import d, motif_d, get_median_strings, pr, compute_entropy
+from regulatory_motifs import d, motif_d, get_median_strings, pr, compute_entropy, get_consensus_strings
 
 
 def test_d():
@@ -49,3 +49,15 @@ def test_compute_entropy():
     probs3 = [0.0, 0.0, 0.9, 0.1]
     entropy3 = compute_entropy(probs3)
     assert abs(entropy3 - 0.467) < epsilon
+
+
+def test_get_consensus_strings():
+    probs = {'A': [0.4, 0.3, 0.0, 0.1, 0.0, 0.9],
+             'C': [0.2, 0.3, 0.0, 0.4, 0.0, 0.1],
+             'G': [0.1, 0.3, 1.0, 0.1, 0.5, 0.0],
+             'T': [0.3, 0.1, 0.0, 0.4, 0.5, 0.0]}
+    computed_consensus_strings = set(get_consensus_strings(probs))
+    expected_consensus_strings = {'AAGCGA', 'ACGCGA', 'AGGCGA', 'AAGTGA', 'ACGTGA', 'AGGTGA', 'AAGCTA', 'ACGCTA',
+                                  'AGGCTA', 'AAGTTA', 'ACGTTA', 'AGGTTA'}
+
+    assert computed_consensus_strings == expected_consensus_strings
