@@ -68,4 +68,7 @@ def test_get_consensus_strings_2():
              'G': [0.1, 0.3, 1.0, 0.1, 0.5, 0.0],
              'T': [0.3, 0.1, 0.0, 0.4, 0.5, 0.0]}
     computed_consensus_strings = set(get_consensus_strings(probs))
-    print(computed_consensus_strings)
+    expected_consensus_strings = \
+        {'AGGCGA', 'AAGCGA', 'ACGTTA', 'AGGTTA', 'ACGCGA', 'AAGCTA', 'ACGTGA', 'AGGCTA', 'AAGTTA', 'ACGCTA', 'AGGTGA',
+         'AAGTGA'}
+    assert computed_consensus_strings == expected_consensus_strings
