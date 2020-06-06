@@ -1,4 +1,4 @@
-from phix174.phiX174_error_free_overlap import pattern_count
+from phix174.phiX174_error_free_overlap import pattern_count, frequent_words
 
 
 def test_pattern_count():
@@ -16,3 +16,11 @@ def test_neighbors_3():
     pattern = lines[1].strip()
     computed_output = pattern_count(text, pattern)
     assert computed_output == 24
+
+
+def test_frequent_words():
+    text = 'ACGTTGCATGTCGCATGATGCATGAGAGCT'
+    k = 4
+    computed_output = frequent_words(text, k)
+    expected_output = ['CATG', 'GCAT']
+    assert sorted(computed_output) == sorted(expected_output)
