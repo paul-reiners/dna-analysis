@@ -111,7 +111,7 @@ def get_overlap_graph(genome_reads):
 
 def suffix(pattern, k):
     """we define SUFFIX(Pattern) as the last (k-1)-mers in a k-mer Pattern"""
-    return pattern[:k - 1]
+    return pattern[-(k - 1):]
 
 
 def prefix(pattern, k):
