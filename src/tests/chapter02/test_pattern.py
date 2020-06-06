@@ -22,3 +22,12 @@ def test_get_pattern_matches():
     computed_output = get_pattern_matches(pattern, genome)
     expected_output = [1, 3, 9]
     assert computed_output == expected_output
+
+
+def test_get_pattern_matches_2():
+    file1 = open('../../../data/chapter01/dataset_3_5.txt', 'r')
+    lines = file1.readlines()
+    pattern = lines[0].strip()
+    genome = lines[1].strip()
+    computed_output = get_pattern_matches(pattern, genome)
+    print(' '.join(map(lambda s: str(s), computed_output)))
