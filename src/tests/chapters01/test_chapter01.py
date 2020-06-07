@@ -13,3 +13,9 @@ def test_pattern_to_number_2():
 
 def test_number_to_pattern():
     assert number_to_pattern(11, 2) == 'GT'
+
+
+def test_number_to_pattern_2():
+    actual_result = number_to_pattern(5437, 7)
+    expected_result = 'CCCATTC'
+    assert actual_result == expected_result
