@@ -19,3 +19,9 @@ def test_number_to_pattern_2():
     actual_result = number_to_pattern(5437, 7)
     expected_result = 'CCCATTC'
     assert actual_result == expected_result
+
+
+def test_number_to_pattern_3():
+    actual_result = number_to_pattern(5437, 8)
+    expected_result = 'ACCCATTC'
+    assert actual_result == expected_result
