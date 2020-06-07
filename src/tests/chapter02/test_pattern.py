@@ -31,3 +31,12 @@ def test_get_pattern_matches_2():
     genome = lines[1].strip()
     computed_output = get_pattern_matches(pattern, genome)
     print(' '.join(map(lambda s: str(s), computed_output)))
+
+
+def test_get_pattern_matches_vibrio_cholerae():
+    file1 = open('../../../data/chapter01/Vibrio_cholerae.txt', 'r')
+    lines = file1.readlines()
+    pattern = 'CTTGATCAT'
+    vibrio_cholerae_genome = lines[0].strip()
+    computed_output = get_pattern_matches(pattern, vibrio_cholerae_genome)
+    print(' '.join(map(lambda s: str(s), computed_output)))

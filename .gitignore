@@ -131,3 +131,4 @@ dmypy.json
 .pyre/
 /data/chapter02/dataset_156_8.txt
 /data/chapter02/dataset_3014_4.txt
+/data/chapter01/Vibrio_cholerae.txt
