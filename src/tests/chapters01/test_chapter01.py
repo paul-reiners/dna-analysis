@@ -39,6 +39,12 @@ def test_number_to_pattern_4():
     assert actual_result == expected_result
 
 
+def test_number_to_pattern_5():
+    actual_result = number_to_pattern(5765, 11)
+    expected_result = 'AAAACCGGACC'
+    assert actual_result == expected_result
+
+
 def test_computing_frequencies():
     text = 'ACGCGGCTCTGAAA'
     k = 2
