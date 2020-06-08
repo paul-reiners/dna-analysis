@@ -11,6 +11,12 @@ def test_pattern_to_number_2():
     assert actual_result == expected_result
 
 
+def test_pattern_to_number_3():
+    actual_result = pattern_to_number('AGT')
+    expected_result = 11
+    assert actual_result == expected_result
+
+
 def test_number_to_pattern():
     assert number_to_pattern(11, 2) == 'GT'
 
