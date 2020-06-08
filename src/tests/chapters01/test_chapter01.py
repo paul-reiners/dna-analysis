@@ -48,3 +48,12 @@ def test_get_computing_frequencies_2():
     k = int(lines[1].strip())
     computed_result = computing_frequencies(text, k)
     print(' '.join(map(lambda s: str(s), computed_result)))
+
+
+def test_pattern_to_number_4():
+    file1 = open('../../../data/chapter01/dataset_3010_2.txt', 'r')
+    lines = file1.readlines()
+    pattern = lines[0].strip()
+    computed_result = pattern_to_number(pattern)
+    expected_result = 61002248781
+    assert computed_result == expected_result
