@@ -33,3 +33,12 @@ def test_computing_frequencies():
     computed_result = computing_frequencies(text, k)
     expected_output = [2, 1, 0, 0, 0, 0, 2, 2, 1, 2, 1, 0, 0, 1, 1, 0]
     assert computed_result == expected_output
+
+
+def test_get_computing_frequencies_2():
+    file1 = open('../../../data/chapter01/dataset_2994_5.txt', 'r')
+    lines = file1.readlines()
+    text = lines[0].strip()
+    k = int(lines[1].strip())
+    computed_result = computing_frequencies(text, k)
+    print(' '.join(map(lambda s: str(s), computed_result)))
