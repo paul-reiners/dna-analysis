@@ -1,3 +1,5 @@
+import math
+
 symbol_to_number_map = {'A': 0, 'C': 1, 'G': 2, 'T': 3}
 number_to_symbol_map = {v: k for k, v in symbol_to_number_map.items()}
 
@@ -44,3 +46,13 @@ def number_to_pattern(index, k):
     prefix_pattern = number_to_pattern(prefix_index, k - 1)
 
     return prefix_pattern + symbol
+
+
+def computing_frequencies(text, k):
+    frequency_array = [0] * int(math.pow(4, k))
+    for i in range(len(text) - k + 1):
+        pattern = text[i:i + k]
+        j = pattern_to_number(pattern)
+        frequency_array[j] += 1
+
+    return frequency_array

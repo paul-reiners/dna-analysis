@@ -1,4 +1,4 @@
-from chapter01.chapter01 import pattern_to_number, number_to_pattern
+from chapter01.chapter01 import pattern_to_number, number_to_pattern, computing_frequencies
 
 
 def test_pattern_to_number():
@@ -25,3 +25,11 @@ def test_number_to_pattern_3():
     actual_result = number_to_pattern(5437, 8)
     expected_result = 'ACCCATTC'
     assert actual_result == expected_result
+
+
+def test_computing_frequencies():
+    text = 'ACGCGGCTCTGAAA'
+    k = 2
+    computed_result = computing_frequencies(text, k)
+    expected_output = [2, 1, 0, 0, 0, 0, 2, 2, 1, 2, 1, 0, 0, 1, 1, 0]
+    assert computed_result == expected_output
