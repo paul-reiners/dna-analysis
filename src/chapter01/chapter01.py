@@ -68,3 +68,69 @@ def faster_frequent_words(text, k):
             frequent_patterns.add(pattern)
 
     return frequent_patterns
+
+
+def finding_frequent_words_by_sorting(text, k):
+    frequent_patterns = set()
+    n = len(text) - k + 1
+    index = [0] * n
+    count = [0] * n
+    for i in range(n):
+        pattern = text(i, k)
+        index[i] = pattern_to_number(pattern)
+        count[i] = 1
+    sorted_index = sorted(index)
+    for i in range(1, n):
+        if sorted_index[i] == sorted_index[i - 1]:
+            count[i] = count[i - 1] + 1
+    max_count = max(count)
+    for i in range(n):
+        if count[i] == max_count:
+            pattern = number_to_pattern(sorted_index[i], k)
+            frequent_patterns.add(pattern)
+
+    return frequent_patterns
+
+
+def clump_finding(genome, k, L, t):
+    frequent_patterns = set()
+    n = int(math.pow(4, k))
+    clump = [0] * n
+    for i in range(len(genome) - L + 1):
+        text = genome[i : i + L]
+        frequency_array = computing_frequencies(text, k)
+        for index in range(n):
+            if frequency_array[index] >= t:
+                clump[index] = 1
+    for i in range(n):
+        if clump[i] == 1:
+            pattern = number_to_pattern(i, k)
+            frequent_patterns.add(pattern)
+
+    return frequent_patterns
+
+
+def better_clump_finding(genome, k, t, L):
+    frequent_patterns = set()
+    n = int(math.pow(4, k))
+    clump = [0] * n
+    text = genome[0:L]
+    frequency_array = computing_frequencies(text, k)
+    for i in range(n):
+        if frequency_array[i] >= t:
+            clump[i] = 1
+    for i in range(1, len(genome) - L + 1):
+        first_pattern = genome[i - 1 : i - 1 + k]
+        index = pattern_to_number(first_pattern)
+        frequency_array[index] = frequency_array[index] - 1
+        last_pattern = genome[i + L - k : i + L]
+        index = pattern_to_number(last_pattern)
+        frequency_array[index] = frequency_array[index] + 1
+        if frequency_array[index] >= t:
+            clump[index] = 1
+    for i in range(n):
+        if clump[i] == 1:
+            pattern = number_to_pattern(i, k)
+            frequent_patterns.add(pattern)
+
+    return frequent_patterns

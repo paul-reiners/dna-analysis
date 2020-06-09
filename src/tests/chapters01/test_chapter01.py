@@ -1,4 +1,4 @@
-from chapter01.chapter01 import pattern_to_number, number_to_pattern, computing_frequencies
+from chapter01.chapter01 import pattern_to_number, number_to_pattern, computing_frequencies, better_clump_finding
 
 
 def test_pattern_to_number():
@@ -69,3 +69,13 @@ def test_pattern_to_number_4():
     computed_result = pattern_to_number(pattern)
     expected_result = 61002248781
     assert computed_result == expected_result
+
+
+def test_better_clump_finding():
+    genome = 'CGGACTCGACAGATGTGAAGAACGACAATGTGAAGACTCGACACGACAGAGTGAAGAGAAGAGGAAACATTGTAA'
+    k = 5
+    L = 50
+    t = 4
+    calculated_output = better_clump_finding(genome, k, t, L)
+    expected_output = {'CGACA', 'GAAGA'}
+    assert expected_output == calculated_output
