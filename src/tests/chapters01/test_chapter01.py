@@ -79,3 +79,25 @@ def test_better_clump_finding():
     calculated_output = better_clump_finding(genome, k, t, L)
     expected_output = {'CGACA', 'GAAGA'}
     assert expected_output == calculated_output
+
+
+def test_better_clump_finding_2():
+    file1 = open('../../../data/chapter01/dataset_4_5.txt', 'r')
+    lines = file1.readlines()
+    genome = lines[0].strip()
+    k = 9
+    L = 27
+    t = 4
+    calculated_output = better_clump_finding(genome, k, t, L)
+    print(' '.join(map(lambda s: str(s), calculated_output)))
+
+
+def test_better_clump_finding_e_coli():
+    file1 = open('../../../data/chapter01/E_coli.txt', 'r')
+    lines = file1.readlines()
+    genome = lines[0].strip()
+    k = 9
+    L = 500
+    t = 3
+    calculated_output = better_clump_finding(genome, k, t, L)
+    print(len(calculated_output))
