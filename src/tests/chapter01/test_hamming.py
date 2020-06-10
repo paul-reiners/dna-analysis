@@ -1,4 +1,4 @@
-from chapter01.hamming import hamming_distance, find_approximate_pattern_matches
+from chapter01.hamming import hamming_distance, find_approximate_pattern_matches, count
 
 
 def test_hamming_distance():
@@ -35,3 +35,20 @@ def test_find_approximate_pattern_matche_2():
     d = int(lines[2].strip())
     calculated_output = find_approximate_pattern_matches(pattern, text, d)
     print(' '.join(map(lambda n: str(n), calculated_output)))
+
+
+def test_count():
+    text = 'AACAAGCTGATAAACATTTAAAGAG'
+    pattern = 'AAAAA'
+    d = 2
+    calculated_result = count(text, pattern, d)
+    print(calculated_result)
+
+
+def test_count_2():
+    text = 'TTTAGAGCCTTCAGAGG'
+    pattern = 'GAGG'
+    d = 2
+    calculated_result = count(text, pattern, d)
+    expected_result = 4
+    assert calculated_result == expected_result
