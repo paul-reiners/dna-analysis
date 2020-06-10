@@ -52,3 +52,13 @@ def test_count_2():
     calculated_result = count(text, pattern, d)
     expected_result = 4
     assert calculated_result == expected_result
+
+
+def test_count_3():
+    file1 = open('../../../data/chapter01/dataset_9_6.txt', 'r')
+    lines = file1.readlines()
+    pattern = lines[0].strip()
+    text = lines[1].strip()
+    d = int(lines[2].strip())
+    calculated_output = count(pattern, text, d)
+    print(calculated_output)

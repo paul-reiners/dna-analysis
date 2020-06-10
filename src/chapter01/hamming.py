@@ -18,7 +18,7 @@ def find_approximate_pattern_matches(pattern, text, d):
 
 
 def count(text, pattern, d):
-    return len(find_approximate_pattern_matches(pattern, text, d))
+    return len(find_approximate_pattern_matches(text, pattern, d))
 
 
 def approximate_pattern_count(text, pattern, d):
