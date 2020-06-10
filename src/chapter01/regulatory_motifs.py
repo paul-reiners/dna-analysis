@@ -3,15 +3,6 @@ import math
 from itertools import product
 
 
-def hamming_distance(str1, str2):
-    distance = 0
-    for i in range(len(str1)):
-        if str1[i:i + 1] != str2[i:i + 1]:
-            distance += 1
-
-    return distance
-
-
 def d(pattern, string):
     shortest = -1
     pattern_length = len(pattern)
