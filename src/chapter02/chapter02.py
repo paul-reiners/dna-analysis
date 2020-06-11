@@ -22,7 +22,7 @@ def frequent_words_with_mismatches(text, k, d):
     for k in k_mer_to_freq:
         n = k_mer_to_freq[k]
         if n == max_count:
-            frequenwt_words.append(k)
+            frequent_words.append(k)
 
     return frequent_words
 
