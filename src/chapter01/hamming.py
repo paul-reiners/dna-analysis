@@ -8,7 +8,7 @@ def hamming_distance(s1, s2):
     return dist
 
 
-def find_approximate_pattern_matches(pattern, text, d):
+def find_approximate_pattern_matches(text, pattern, d):
     pattern_matches = []
     for i in range(len(text) - len(pattern) + 1):
         if hamming_distance(text[i:i + len(pattern)], pattern) <= d:
