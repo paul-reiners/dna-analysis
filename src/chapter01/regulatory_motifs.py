@@ -2,6 +2,8 @@ import itertools
 import math
 from itertools import product
 
+from chapter01.hamming import hamming_distance
+
 
 def d(pattern, string):
     shortest = -1
@@ -73,3 +75,23 @@ def compute_entropy(probs):
             entropy += -1 * prob * math.log(prob, 2)
 
     return entropy
+
+
+def score(motifs):
+    total = 0.0
+    for probs in motifs:
+        total += compute_entropy(probs)
+
+    return total
+
+
+def count(motifs):
+    row_count = len(motifs)
+    col_count = len(motifs[0])
+    counts = {'A': [0] * col_count, 'C': [0] * col_count, 'G': [0] * col_count, 'T': [0] * col_count}
+    for col in range(col_count):
+        for row in range(row_count):
+            nucleotide = motifs[row][col].upper()
+            counts[nucleotide][col] += 1
+
+    return counts
