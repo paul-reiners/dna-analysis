@@ -17,6 +17,13 @@ def test_motif_d():
 
 
 def test_get_median_strings():
+    motifs = {'AAATTGACGCAT', 'GACGACCACGTT', 'CGTCAGCGCCTG', 'GCTGAGCACCGG', 'AGTTCGGGACAG'}
+    computed_median_strings = set(get_median_strings(3, motifs))
+    expected_median_strings = {'GAC'}
+    assert computed_median_strings == expected_median_strings
+
+
+def test_get_median_strings_2():
     motifs = {'CTCGATGAGTAGGAAAGTAGTTTCACTGGGCGAACCACCCCGGCGCTAATCCTAGTGCCC',
               'GCAATCCTACCCGAGGCCACATATCAGTAGGAACTAGAACCACCACGGGTGGCTAGTTTC',
               'GGTGTTGAACCACGGGGTTAGTTTCATCTATTGTAGGAATCGGCTTCAAATCCTACACAG'}
