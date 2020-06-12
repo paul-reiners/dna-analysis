@@ -78,11 +78,14 @@ def compute_entropy(probs):
 
 
 def score(motifs):
-    total = 0.0
-    for probs in motifs:
-        total += compute_entropy(probs)
+    p = profile(motifs)
+    n = len(p['A'])
+    entropies = [0.0] * n
+    for i in range(n):
+        col = [p[nucleotide][i] for nucleotide in 'ACGT']
+        entropies[i] = compute_entropy(col)
 
-    return total
+    return sum(entropies)
 
 
 def count(motifs):
