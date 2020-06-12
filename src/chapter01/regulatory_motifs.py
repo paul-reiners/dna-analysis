@@ -8,8 +8,9 @@ from chapter01.hamming import hamming_distance
 def d(pattern, string):
     shortest = -1
     pattern_length = len(pattern)
-    for start_index in range(len(string) - pattern_length):
-        distance = hamming_distance(pattern, string[start_index:start_index + pattern_length])
+    for start_index in range(len(string) - pattern_length + 1):
+        sub_string = string[start_index:start_index + pattern_length]
+        distance = hamming_distance(pattern, sub_string)
         if shortest == -1 or distance < shortest:
             shortest = distance
 

@@ -136,3 +136,12 @@ def test_score():
     computed_result = score(motifs)
     expected_result = 9.916290005356972
     assert abs(computed_result - expected_result) < 0.1
+
+
+def test_get_median_strings_3():
+    file1 = open('../../../data/chapter01/dataset_158_9.txt', 'r')
+    lines = file1.readlines()
+    k = int(lines[0].strip())
+    motifs = list(map(lambda s: s.strip(), lines[1:]))
+    computed_output = get_median_strings(k, motifs)
+    print(' '.join(map(lambda s: str(s), computed_output)))
