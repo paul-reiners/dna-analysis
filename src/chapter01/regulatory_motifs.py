@@ -95,3 +95,13 @@ def count(motifs):
             counts[nucleotide][col] += 1
 
     return counts
+
+
+def profile(motifs):
+    n = len(motifs)
+    profile_dict = {}
+    counts = count(motifs)
+    for nucleotide in counts:
+        profile_dict[nucleotide] = list(map(lambda k: k / n, counts[nucleotide]))
+
+    return profile_dict
