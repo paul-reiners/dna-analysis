@@ -33,3 +33,12 @@ def test_greedy_motif_search():
     calculated_result = greedy_motif_search(dna, k, t)
     expected_result = ['CAG', 'CAG', 'CAA', 'CAA', 'CAA']
     assert calculated_result == expected_result
+
+
+def test_greedy_motif_search_2():
+    file1 = open('../../../data/week03/dataset_159_5.txt', 'r')
+    lines = file1.readlines()
+    k, t = map(lambda s: int(s), lines[0].strip().split())
+    dna = list(map(lambda s: s.strip(), lines[1:]))
+    calculated_output = calculated_result = greedy_motif_search(dna, k, t)
+    print('\n\n'.join(calculated_output))
