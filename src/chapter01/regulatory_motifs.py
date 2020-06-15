@@ -59,11 +59,11 @@ def get_median_strings(k, motifs):
     return median_strings
 
 
-def pr(pattern, profile):
+def pr(pattern, prfl):
     prob = 1.0
     for i in range(len(pattern)):
         nucleotide = pattern[i]
-        prob *= profile[nucleotide][i]
+        prob *= prfl[nucleotide][i]
 
     return prob
 
@@ -101,11 +101,33 @@ def count(motifs):
     return counts
 
 
+def count_with_pseudocounts(motifs):
+    row_count = len(motifs)
+    col_count = len(motifs[0])
+    counts = {'A': [1] * col_count, 'C': [1] * col_count, 'G': [1] * col_count, 'T': [1] * col_count}
+    for col in range(col_count):
+        for row in range(row_count):
+            nucleotide = motifs[row][col].upper()
+            counts[nucleotide][col] += 1
+
+    return counts
+
+
 def profile(motifs):
     n = len(motifs)
     profile_dict = {}
     counts = count(motifs)
     for nucleotide in counts:
         profile_dict[nucleotide] = list(map(lambda k: k / n, counts[nucleotide]))
+
+    return profile_dict
+
+
+def profile_with_pseudocounts(motifs):
+    n = len(motifs)
+    profile_dict = {}
+    counts = count_with_pseudocounts(motifs)
+    for nucleotide in counts:
+        profile_dict[nucleotide] = list(map(lambda k: k / (n + len(motifs[0])), counts[nucleotide]))
 
     return profile_dict

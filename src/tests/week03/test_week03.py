@@ -31,7 +31,7 @@ def test_greedy_motif_search():
     k = 3
     t = 5
     calculated_result = greedy_motif_search(dna, k, t)
-    expected_result = ['CAG', 'CAG', 'CAA', 'CAA', 'CAA']
+    expected_result = ['TTC', 'ATC', 'TTC', 'ATC', 'TTC']
     assert calculated_result == expected_result
 
 

@@ -1,4 +1,4 @@
-from chapter01.regulatory_motifs import pr, profile, score
+from chapter01.regulatory_motifs import pr, score, profile_with_pseudocounts
 
 
 def get_profile_most_probable_k_mer(text, k, profile):
@@ -21,7 +21,7 @@ def greedy_motif_search(dna, k, t):
         motif = dna[0][start:start + k]
         motifs[0] = motif
         for i in range(1, t):
-            next_profile = profile(motifs[:i])
+            next_profile = profile_with_pseudocounts(motifs[:i])
             motifs[i] = get_profile_most_probable_k_mer(dna[i], k, next_profile)
         if score(motifs) < score(best_motifs):
             best_motifs = motifs[:]
