@@ -1,4 +1,4 @@
-from week03.week03 import get_profile_most_probable_k_mer, greedy_motif_search
+from week03.week03 import get_profile_most_probable_k_mer, greedy_motif_search, distance_between_pattern_and_strings
 
 
 def test_get_profile_most_probable_k_mer():
@@ -51,3 +51,11 @@ def test_greedy_motif_search_3():
     dna = list(map(lambda s: s.strip(), lines[1:]))
     calculated_result = greedy_motif_search(dna, k, t)
     print('\n\n'.join(calculated_result))
+
+
+def test_distance_between_pattern_and_strings():
+    pattern = 'AAA'
+    dna = ['TTACCTTAAC', 'GATATCTGTC', 'ACGGCGTTCG', 'CCCTAAAGAG', 'CGTCAGAGGT']
+    computed_result = distance_between_pattern_and_strings(pattern, dna)
+    expected_result = 5
+    assert computed_result == expected_result

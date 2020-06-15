@@ -1,3 +1,4 @@
+from chapter01.hamming import hamming_distance
 from chapter01.regulatory_motifs import pr, score, profile_with_pseudocounts
 
 
@@ -27,3 +28,17 @@ def greedy_motif_search(dna, k, t):
             best_motifs = motifs[:]
 
     return best_motifs
+
+
+def distance_between_pattern_and_strings(pattern, dna):
+    k = len(pattern)
+    distance = 0
+    for text in dna:
+        shortest_distance = 2 * max(len(text), len(pattern))
+        for i in range(len(text) - k + 1):
+            candidate_pattern = text[i:i + k]
+            if shortest_distance > hamming_distance(pattern, candidate_pattern):
+                shortest_distance = hamming_distance(pattern, candidate_pattern)
+        distance += shortest_distance
+
+    return distance
