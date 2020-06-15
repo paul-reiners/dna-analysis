@@ -1,5 +1,5 @@
 from chapter01.regulatory_motifs import d, motif_d, get_median_strings, pr, compute_entropy, get_consensus_strings, \
-    count, score, profile, count_with_pseudocounts
+    count, score, profile, count_with_pseudocounts, profile_with_pseudocounts
 
 
 def test_d():
@@ -164,9 +164,26 @@ def test_count_with_pseudocounts():
               ['A', 'C', 'T', 'A'],
               ['A', 'G', 'G', 'T']]
     calculated_results = count_with_pseudocounts(motifs)
-    expected_results = {'A': [2+1, 1+1, 1+1, 1+1],
-                        'C': [0+1, 1+1, 1+1, 1+1],
-                        'G': [1+1, 1+1, 1+1, 0+1],
-                        'T': [1+1, 1+1, 1+1, 2+1]}
+    expected_results = {'A': [2 + 1, 1 + 1, 1 + 1, 1 + 1],
+                        'C': [0 + 1, 1 + 1, 1 + 1, 1 + 1],
+                        'G': [1 + 1, 1 + 1, 1 + 1, 0 + 1],
+                        'T': [1 + 1, 1 + 1, 1 + 1, 2 + 1]}
     for nucleotide in expected_results:
         assert expected_results[nucleotide] == calculated_results[nucleotide]
+
+
+def test_profile_with_pseudocounts():
+    motifs = [['T', 'A', 'A', 'C'],
+              ['G', 'T', 'C', 'T'],
+              ['A', 'C', 'T', 'A'],
+              ['A', 'G', 'G', 'T']]
+    calculated_results = profile_with_pseudocounts(motifs)
+    expected_results = {'A': [3/8, 2/8, 2/8, 2/8],
+                        'C': [1/8, 2/8, 2/8, 2/8],
+                        'G': [2/8, 2/8, 2/8, 1/8],
+                        'T': [2/8, 2/8, 2/8, 3/8]}
+    for nucleotide in expected_results:
+        expected_probs = expected_results[nucleotide]
+        actual_probs = calculated_results[nucleotide]
+        for i in range(len(expected_probs)):
+            assert abs(expected_probs[i] - actual_probs[i]) < 0.01
