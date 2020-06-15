@@ -40,5 +40,14 @@ def test_greedy_motif_search_2():
     lines = file1.readlines()
     k, t = map(lambda s: int(s), lines[0].strip().split())
     dna = list(map(lambda s: s.strip(), lines[1:]))
-    calculated_output = calculated_result = greedy_motif_search(dna, k, t)
-    print('\n\n'.join(calculated_output))
+    calculated_result = greedy_motif_search(dna, k, t)
+    print('\n\n'.join(calculated_result))
+
+
+def test_greedy_motif_search_3():
+    file1 = open('../../../data/week03/dataset_160_9.txt', 'r')
+    lines = file1.readlines()
+    k, t = map(lambda s: int(s), lines[0].strip().split())
+    dna = list(map(lambda s: s.strip(), lines[1:]))
+    calculated_result = greedy_motif_search(dna, k, t)
+    print('\n\n'.join(calculated_result))
