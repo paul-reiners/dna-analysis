@@ -1,4 +1,4 @@
-from chapter02.exercise2a import motif_enumeration
+from week02.exercise2a import motif_enumeration
 
 
 def test_motif_enumeration():

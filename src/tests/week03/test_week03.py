@@ -59,3 +59,12 @@ def test_distance_between_pattern_and_strings():
     computed_result = distance_between_pattern_and_strings(pattern, dna)
     expected_result = 5
     assert computed_result == expected_result
+
+
+def test_distance_between_pattern_and_strings_2():
+    file1 = open('../../../data/week03/dataset_5164_1.txt', 'r')
+    lines = file1.readlines()
+    pattern = lines[0].strip()
+    dna = lines[1].split()
+    calculated_result = distance_between_pattern_and_strings(pattern, dna)
+    print(calculated_result)

@@ -1,4 +1,4 @@
-from chapter01.chapter01 import pattern_to_number, number_to_pattern, computing_frequencies, better_clump_finding
+from week01.chapter01 import pattern_to_number, number_to_pattern, computing_frequencies, better_clump_finding
 
 
 def test_pattern_to_number():
@@ -54,7 +54,7 @@ def test_computing_frequencies():
 
 
 def test_get_computing_frequencies_2():
-    file1 = open('../../../data/chapter01/dataset_2994_5.txt', 'r')
+    file1 = open('../../../data/week01/dataset_2994_5.txt', 'r')
     lines = file1.readlines()
     text = lines[0].strip()
     k = int(lines[1].strip())
@@ -63,7 +63,7 @@ def test_get_computing_frequencies_2():
 
 
 def test_pattern_to_number_4():
-    file1 = open('../../../data/chapter01/dataset_3010_2.txt', 'r')
+    file1 = open('../../../data/week01/dataset_3010_2.txt', 'r')
     lines = file1.readlines()
     pattern = lines[0].strip()
     computed_result = pattern_to_number(pattern)
@@ -82,7 +82,7 @@ def test_better_clump_finding():
 
 
 def test_better_clump_finding_2():
-    file1 = open('../../../data/chapter01/dataset_4_5.txt', 'r')
+    file1 = open('../../../data/week01/dataset_4_5.txt', 'r')
     lines = file1.readlines()
     genome = lines[0].strip()
     k = 9
@@ -93,7 +93,7 @@ def test_better_clump_finding_2():
 
 
 def test_better_clump_finding_e_coli():
-    file1 = open('../../../data/chapter01/E_coli.txt', 'r')
+    file1 = open('../../../data/week01/E_coli.txt', 'r')
     lines = file1.readlines()
     genome = lines[0].strip()
     k = 9

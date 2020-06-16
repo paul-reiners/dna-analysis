@@ -1,4 +1,4 @@
-from chapter01.regulatory_motifs import d, motif_d, get_median_strings, pr, compute_entropy, get_consensus_strings, \
+from week01.regulatory_motifs import d, motif_d, get_median_strings, pr, compute_entropy, get_consensus_strings, \
     count, score, profile, count_with_pseudocounts, profile_with_pseudocounts
 
 
@@ -150,7 +150,7 @@ def test_score():
 
 
 def test_get_median_strings_3():
-    file1 = open('../../../data/chapter01/dataset_158_9.txt', 'r')
+    file1 = open('../../../data/week01/dataset_158_9.txt', 'r')
     lines = file1.readlines()
     k = int(lines[0].strip())
     motifs = list(map(lambda s: s.strip(), lines[1:]))

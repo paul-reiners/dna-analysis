@@ -1,7 +1,7 @@
 from itertools import product
 
-from chapter01.hamming import count
-from chapter01.pattern import get_reverse_complement
+from week01.hamming import count
+from week01.pattern import get_reverse_complement
 
 
 def get_all_k_mers(k):

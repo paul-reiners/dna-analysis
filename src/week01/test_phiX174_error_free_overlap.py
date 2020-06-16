@@ -10,7 +10,7 @@ def test_pattern_count_2():
 
 
 def test_neighbors_3():
-    file1 = open('../../data/chapter01/dataset_2_7.txt', 'r')
+    file1 = open('../../data/week01/dataset_2_7.txt', 'r')
     lines = file1.readlines()
     text = lines[0].strip()
     pattern = lines[1].strip()
@@ -27,7 +27,7 @@ def test_frequent_words():
 
 
 def test_frequent_words_2():
-    file1 = open('../../data/chapter01/dataset_2_10.txt', 'r')
+    file1 = open('../../data/week01/dataset_2_10.txt', 'r')
     lines = file1.readlines()
     text = lines[0].strip()
     k = int(lines[1].strip())

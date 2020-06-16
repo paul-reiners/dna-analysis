@@ -1,4 +1,4 @@
-from chapter02.pattern import get_reverse_complement, get_pattern_matches
+from week02.pattern import get_reverse_complement, get_pattern_matches
 
 
 def test_get_reverse_complement():
@@ -9,7 +9,7 @@ def test_get_reverse_complement():
 
 
 def test_get_reverse_complement_2():
-    file1 = open('../../../data/chapter01/dataset_3_2.txt', 'r')
+    file1 = open('../../../data/week01/dataset_3_2.txt', 'r')
     lines = file1.readlines()
     pattern = lines[0].strip()
     computed_output = get_reverse_complement(pattern)
@@ -25,7 +25,7 @@ def test_get_pattern_matches():
 
 
 def test_get_pattern_matches_2():
-    file1 = open('../../../data/chapter01/dataset_3_5.txt', 'r')
+    file1 = open('../../../data/week01/dataset_3_5.txt', 'r')
     lines = file1.readlines()
     pattern = lines[0].strip()
     genome = lines[1].strip()
@@ -34,7 +34,7 @@ def test_get_pattern_matches_2():
 
 
 def test_get_pattern_matches_vibrio_cholerae():
-    file1 = open('../../../data/chapter01/Vibrio_cholerae.txt', 'r')
+    file1 = open('../../../data/week01/Vibrio_cholerae.txt', 'r')
     lines = file1.readlines()
     pattern = 'CTTGATCAT'
     vibrio_cholerae_genome = lines[0].strip()

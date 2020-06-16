@@ -1,4 +1,4 @@
-from chapter02.neighbors import neighbors
+from week02.neighbors import neighbors
 from section01.hamming import approximate_pattern_count
 
 

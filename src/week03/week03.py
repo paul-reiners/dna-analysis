@@ -1,5 +1,5 @@
-from chapter01.hamming import hamming_distance
-from chapter01.regulatory_motifs import pr, score, profile_with_pseudocounts
+from week01.hamming import hamming_distance
+from week01.regulatory_motifs import pr, score, profile_with_pseudocounts
 
 
 def get_profile_most_probable_k_mer(text, k, profile):

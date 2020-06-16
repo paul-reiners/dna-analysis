@@ -1,4 +1,4 @@
-from chapter02.neighbors import neighbors
+from week02.neighbors import neighbors
 
 
 def test_neighbors():

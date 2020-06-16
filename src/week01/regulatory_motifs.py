@@ -2,7 +2,7 @@ import itertools
 import math
 from itertools import product
 
-from chapter01.hamming import hamming_distance
+from week01.hamming import hamming_distance
 
 
 def d(pattern, string):

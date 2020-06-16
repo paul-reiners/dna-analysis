@@ -1,4 +1,4 @@
-from chapter02.skew import get_minimum_skew_positions
+from week02.skew import get_minimum_skew_positions
 
 
 def test_get_minimum_skew_positions():
@@ -9,7 +9,7 @@ def test_get_minimum_skew_positions():
 
 
 def test_get_minimum_skew_positions_2():
-    file1 = open('../../../data/chapter02/dataset_7_6.txt', 'r')
+    file1 = open('../../../data/week02/dataset_7_6.txt', 'r')
     lines = file1.readlines()
     genome = lines[0].strip()
     calculated_output = get_minimum_skew_positions(genome)

@@ -1,4 +1,4 @@
-from chapter02.chapter02 import frequent_words_with_mismatches, frequent_words_with_mismatches_and_reverse_complements
+from week02.chapter02 import frequent_words_with_mismatches, frequent_words_with_mismatches_and_reverse_complements
 
 
 def test_frequent_words_with_mismatches():
@@ -11,7 +11,7 @@ def test_frequent_words_with_mismatches():
 
 
 def test_frequent_words_with_mismatches_2():
-    file1 = open('../../../data/chapter02/dataset_9_7.txt', 'r')
+    file1 = open('../../../data/week02/dataset_9_7.txt', 'r')
     lines = file1.readlines()
     text = lines[0].strip()
     k_and_d = lines[1].strip().split()
@@ -31,7 +31,7 @@ def test_frequent_words_with_mismatches_and_reverse_complements():
 
 
 def test_frequent_words_with_mismatches_and_reverse_complements_2():
-    file1 = open('../../../data/chapter02/dataset_9_8.txt', 'r')
+    file1 = open('../../../data/week02/dataset_9_8.txt', 'r')
     lines = file1.readlines()
     text = lines[0].strip()
     k_and_d = lines[1].strip().split()
