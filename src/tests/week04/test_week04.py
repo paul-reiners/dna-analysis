@@ -1,6 +1,6 @@
 import random
 
-from week04.week04 import monte_carlo_randomized_motif_search, get_most_likely_motif
+from week04.week04 import monte_carlo_randomized_motif_search, get_most_likely_motif, motifs
 
 
 def test_monte_carlo_randomized_motif_search():
@@ -25,14 +25,33 @@ def test_monte_carlo_randomized_motif_search_2():
 
 
 def test_get_most_likely_motif():
-    profile = {'A': [4/5,   0,   0, 1/5],
-               'C': [  0, 3/5, 1/5,   0],
-               'G': [1/5, 1/5, 4/5,   0],
-               'T': [  0, 1/5,   0, 4/5]}
+    profile = {'A': [4 / 5, 0, 0, 1 / 5],
+               'C': [0, 3 / 5, 1 / 5, 0],
+               'G': [1 / 5, 1 / 5, 4 / 5, 0],
+               'T': [0, 1 / 5, 0, 4 / 5]}
     dna = ['ttaccttaac',
            'gatgtctgtc',
            'acggcgttag',
            'ccctaacgag']
     computed_result = get_most_likely_motif(profile, dna[0])
     expected_result = "acct"
+    assert computed_result == expected_result
+
+
+def test_motifs():
+    profile = {'A': [4 / 5, 0, 0, 1 / 5],
+               'C': [0, 3 / 5, 1 / 5, 0],
+               'G': [1 / 5, 1 / 5, 4 / 5, 0],
+               'T': [0, 1 / 5, 0, 4 / 5]}
+    dna = ['ttaccttaac',
+           'gatgtctgtc',
+           'acggcgttag',
+           'ccctaacgag',
+           'cgtcagaggt']
+    computed_result = motifs(profile, dna)
+    expected_result = ["acct",
+                       "atgt",
+                       "gcgt",
+                       "acga",
+                       "aggt"]
     assert computed_result == expected_result

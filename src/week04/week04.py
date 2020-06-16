@@ -65,3 +65,7 @@ def get_most_likely_motif(profile, dna_row):
             best_start = start
 
     return dna_row[best_start: best_start + k]
+
+
+def motifs(profile, dna):
+    return [get_most_likely_motif(profile, dna[i]) for i in range(len(dna))]
