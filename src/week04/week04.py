@@ -38,9 +38,9 @@ def randomized_motif_search(dna, k, t):
     while True:
         next_profile = profile_with_pseudocounts(current_motifs)
         consensus_string = list(get_consensus_strings(next_profile))[0]
+        current_motifs = motifs(next_profile, dna)
         current_score = 0
         for i in range(t):
-            current_motifs[i] = get_profile_most_probable_k_mer(dna[i], k, next_profile)
             current_score += hamming_distance(current_motifs[i], consensus_string)
         if best_score == -1 or current_score < best_score:
             best_motifs = current_motifs[:]
