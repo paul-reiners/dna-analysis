@@ -1,6 +1,7 @@
 import random
 
-from week04.week04 import monte_carlo_randomized_motif_search, get_most_likely_motif, motifs
+from week04.week04 import monte_carlo_randomized_motif_search, get_most_likely_motif, motifs, \
+    gibbs_sampler_with_restarts
 
 
 def test_monte_carlo_randomized_motif_search():
@@ -55,3 +56,25 @@ def test_motifs():
                        "acga",
                        "aggt"]
     assert computed_result == expected_result
+
+
+def test_gibbs_sampler():
+    dna = ['CGCCCCTCTCGGGGGTGTTCAGTAACCGGCCA', 'GGGCGAGGTATGTGTAAGTGCCAAGGTGCCAG', 'TAGTACCGAGACCGAAAGAAGTATACAGGCGT',
+           'TAGATCAAGTTTCAGGTGCACGTCGGTGAACC', 'AATCCACCAGCTCCACGTGCAATGTTGGCCTA']
+    k = 8
+    t = 5
+    n = 100
+    computed_results = gibbs_sampler_with_restarts(dna, k, t, n)
+    expected_results = ['TCTCGGGG', 'CCAAGGTG', 'TACAGGCG', 'TTCAGGTG', 'TCCACGTG']
+    assert computed_results == expected_results
+
+
+def test_gibbs_sampler_2():
+    random.seed(0)
+    file1 = open('../../../data/week04/dataset_163_4.txt', 'r')
+    lines = file1.readlines()
+    k, t, n = [int(s) for s in lines[0].strip().split()]
+    dna = list(map(lambda line: line.strip(), lines[1:]))
+    calculated_result = gibbs_sampler_with_restarts(dna, k, t, n)
+    with open('../../../data/week04/gibbs_sampler_with_restarts_OUTPUT.txt', 'w') as f:
+        print('\r\n'.join(calculated_result), file=f, flush=True)
