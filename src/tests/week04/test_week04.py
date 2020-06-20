@@ -1,5 +1,6 @@
 import random
 
+from week01.regulatory_motifs import profile
 from week04.week04 import monte_carlo_randomized_motif_search, get_most_likely_motif, motifs, \
     gibbs_sampler_with_restarts
 
@@ -12,6 +13,13 @@ def test_monte_carlo_randomized_motif_search():
     computed_result = monte_carlo_randomized_motif_search(dna, k, t)
     expected_result = ['TCTCGGGG', 'CCAAGGTG', 'TACAGGCG', 'TTCAGGTG', 'TCCACGTG']
     assert computed_result == expected_result
+
+
+def test_randomized_motif_search():
+    dna = ['TGACGTTC', 'TAAGAGTT', 'GGACGAAA', 'CTGTTCGC']
+    current_motifs = ['TGA', 'GTT', 'GAA', 'TGT']
+    computed_result = motifs(profile(current_motifs), dna)
+    print(' '.join(computed_result))
 
 
 def test_monte_carlo_randomized_motif_search_2():

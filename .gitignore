@@ -136,3 +136,8 @@ dmypy.json
 /data/week01/dataset_156_8.txt
 /data/week01/dataset_3014_4.txt
 /data/week02/Salmonella_enterica.txt
+/data/week05/upstream25.txt
+/data/week05/upstream100.txt
+/data/week05/upstream250.txt
+/data/week05/upstream500.txt
+/data/week05/upstream1000.txt
