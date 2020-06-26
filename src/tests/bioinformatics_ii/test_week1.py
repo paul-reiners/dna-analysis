@@ -25,3 +25,11 @@ def test_string_spelled_genome_path():
     calculated_result = path_to_genome(patterns)
     expected_result = 'ACCGAAGCT'
     assert calculated_result == expected_result
+
+
+def test_path_to_genome():
+    file1 = open('../../../data/bioinformatics_ii/week1/dataset_198_3.txt', 'r')
+    lines = file1.readlines()
+    patterns = [line.strip() for line in lines]
+    calculated_result = path_to_genome(patterns)
+    print(calculated_result)
