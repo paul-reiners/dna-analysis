@@ -1,4 +1,4 @@
-from bioinformatics_ii.week1 import composition
+from bioinformatics_ii.week1 import composition, path_to_genome
 
 
 def test_composition():
@@ -18,3 +18,10 @@ def test_composition_2():
     print('\n'.join(calculated_result))
     with open('../../../data/bioinformatics_ii/week1/dataset_197_3-OUTPUT.txt', 'w') as f:
         print('\r\n'.join(calculated_result), file=f, flush=True)
+
+
+def test_string_spelled_genome_path():
+    patterns = ['ACCGA', 'CCGAA', 'CGAAG', 'GAAGC', 'AAGCT']
+    calculated_result = path_to_genome(patterns)
+    expected_result = 'ACCGAAGCT'
+    assert calculated_result == expected_result
