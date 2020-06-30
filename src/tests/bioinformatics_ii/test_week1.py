@@ -86,3 +86,17 @@ def test_construct_de_bruijn_graph():
             assert (sorted(value) == sorted(expected_result[key]))
     for key, value in expected_result.items():
         assert sorted(computed_result[key]) == sorted(value)
+
+
+def test_construct_de_bruijn_graph_2():
+    file1 = open('../../../data/bioinformatics_ii/week1/dataset_199_6.txt', 'r')
+    lines = file1.readlines()
+    k = int(lines[0].strip())
+    text = lines[1].strip()
+    calculated_result = construct_de_bruijn_graph(k, text)
+    out_f = open('../../../data/bioinformatics_ii/week1/dataset_199_6_output.txt', 'w')
+    for key, value in calculated_result.items():
+        if len(value) > 0:
+            output_line = "%s -> %s" % (key, ",".join(value))
+            out_f.write(output_line)
+            out_f.write("\n")
