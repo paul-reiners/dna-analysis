@@ -68,3 +68,8 @@ def test_construct_3_universal_string():
     all_3_mers = [''.join(p) for p in product('01', repeat=3)]
     for three_mer in all_3_mers:
         assert result.count(three_mer) == 1
+
+
+def test_construct_4_universal_string():
+    result = construct_k_universal_string(4)
+    assert result == '0000100110101111000'
