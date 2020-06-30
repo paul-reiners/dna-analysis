@@ -1,8 +1,8 @@
-from itertools import permutations, combinations, product
+from itertools import permutations, product
 
 
 def composition(text, k):
-    return sorted([text[start : start + k] for start in range(len(text) - k + 1)])
+    return sorted([text[start: start + k] for start in range(len(text) - k + 1)])
 
 
 def path_to_genome(patterns):
@@ -28,3 +28,14 @@ def construct_k_universal_string(k):
     for k_mer_permutation in k_mer_permutations:
         if all([k_mer_permutation[i][1:] == k_mer_permutation[i + 1][:-1] for i in range(len(k_mer_permutation) - 1)]):
             return path_to_genome(k_mer_permutation)
+
+
+def construct_de_bruijn_graph(k, text):
+    graph = {}
+    for i in range(len(text) - k + 1):
+        key = text[i:i + k - 1]
+        if key not in graph:
+            graph[key] = []
+        graph[key].append(text[i + 1: i + k])
+
+    return graph

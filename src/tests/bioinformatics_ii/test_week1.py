@@ -1,6 +1,7 @@
 from itertools import product
 
-from bioinformatics_ii.week1 import composition, path_to_genome, overlap_graph, construct_k_universal_string
+from bioinformatics_ii.week1 import composition, path_to_genome, overlap_graph, construct_k_universal_string, \
+    construct_de_bruijn_graph
 
 
 def test_composition():
@@ -43,7 +44,7 @@ def test_overlap_graph():
     expected_output = {'CATGC': ['ATGCG'], 'GCATG': ['CATGC'], 'GGCAT': ['GCATG'], 'AGGCA': ['GGCAC', 'GGCAT']}
     for key, value in calculated_output.items():
         if key in expected_output:
-            assert(sorted(value) == sorted(expected_output[key]))
+            assert (sorted(value) == sorted(expected_output[key]))
         else:
             assert len(value) == 0
     for key, value in expected_output.items():
@@ -73,3 +74,15 @@ def test_construct_3_universal_string():
 def test_construct_4_universal_string():
     result = construct_k_universal_string(4)
     assert result == '0000100110101111000'
+
+
+def test_construct_de_bruijn_graph():
+    k = 4
+    text = 'AAGATTCTCTAAGA'
+    computed_result = construct_de_bruijn_graph(k, text)
+    expected_result = {'AAG': ['AGA', 'AGA'], 'AGA': ['GAT'], 'ATT': ['TTC'], 'CTA': ['TAA'], 'CTC': ['TCT'],
+                       'GAT': ['ATT'], 'TAA': ['AAG'], 'TCT': ['CTA', 'CTC'], 'TTC': ['TCT']}
+    for key, value in computed_result.items():
+            assert (sorted(value) == sorted(expected_result[key]))
+    for key, value in expected_result.items():
+        assert sorted(computed_result[key]) == sorted(value)
