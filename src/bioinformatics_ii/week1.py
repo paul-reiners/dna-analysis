@@ -1,4 +1,4 @@
-from itertools import permutations
+from itertools import permutations, combinations
 
 
 def composition(text, k):
@@ -11,3 +11,12 @@ def path_to_genome(patterns):
 
 def overlap(str1, str2):
     return str1[1:] == str2[:-1]
+
+
+def overlap_graph(patterns):
+    graph = {pattern: [] for pattern in patterns}
+    for combo in permutations(patterns, 2):
+        if overlap(combo[0], combo[1]):
+            graph[combo[0]].append(combo[1])
+
+    return graph

@@ -1,4 +1,4 @@
-from bioinformatics_ii.week1 import composition, path_to_genome
+from bioinformatics_ii.week1 import composition, path_to_genome, overlap_graph
 
 
 def test_composition():
@@ -33,3 +33,16 @@ def test_path_to_genome():
     patterns = [line.strip() for line in lines]
     calculated_result = path_to_genome(patterns)
     print(calculated_result)
+
+
+def test_overlap_graph():
+    patterns = ['ATGCG', 'GCATG', 'CATGC', 'AGGCA', 'GGCAT', 'GGCAC']
+    calculated_output = overlap_graph(patterns)
+    expected_output = {'CATGC': ['ATGCG'], 'GCATG': ['CATGC'], 'GGCAT': ['GCATG'], 'AGGCA': ['GGCAC', 'GGCAT']}
+    for key, value in calculated_output.items():
+        if key in expected_output:
+            assert(sorted(value) == sorted(expected_output[key]))
+        else:
+            assert len(value) == 0
+    for key, value in expected_output.items():
+        assert sorted(calculated_output[key]) == sorted(value)
