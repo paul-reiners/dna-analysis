@@ -39,3 +39,15 @@ def construct_de_bruijn_graph(k, text):
         graph[key].append(text[i + 1: i + k])
 
     return graph
+
+
+def construct_de_bruijn_graph_from_k_mers(patterns):
+    graph = {}
+    for pattern in patterns:
+        prefix = pattern[: -1]
+        if prefix not in graph:
+            graph[prefix] = []
+        suffix = pattern[1:]
+        graph[prefix].append(suffix)
+
+    return graph

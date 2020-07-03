@@ -1,7 +1,7 @@
 from itertools import product
 
 from bioinformatics_ii.week1 import composition, path_to_genome, overlap_graph, construct_k_universal_string, \
-    construct_de_bruijn_graph
+    construct_de_bruijn_graph, construct_de_bruijn_graph_from_k_mers
 
 
 def test_composition():
@@ -83,7 +83,7 @@ def test_construct_de_bruijn_graph():
     expected_result = {'AAG': ['AGA', 'AGA'], 'AGA': ['GAT'], 'ATT': ['TTC'], 'CTA': ['TAA'], 'CTC': ['TCT'],
                        'GAT': ['ATT'], 'TAA': ['AAG'], 'TCT': ['CTA', 'CTC'], 'TTC': ['TCT']}
     for key, value in computed_result.items():
-            assert (sorted(value) == sorted(expected_result[key]))
+        assert (sorted(value) == sorted(expected_result[key]))
     for key, value in expected_result.items():
         assert sorted(computed_result[key]) == sorted(value)
 
@@ -100,3 +100,13 @@ def test_construct_de_bruijn_graph_2():
             output_line = "%s -> %s" % (key, ",".join(value))
             out_f.write(output_line)
             out_f.write("\n")
+
+
+def test_construct_de_bruijn_graph_from_k_mers():
+    patterns = ['GAGG', 'CAGG', 'GGGG', 'GGGA', 'CAGG', 'AGGG', 'GGAG']
+    computed_result = construct_de_bruijn_graph_from_k_mers(patterns)
+    expected_result = {'AGG': ['GGG'], 'CAG': ['AGG', 'AGG'], 'GAG': ['AGG'], 'GGA': ['GAG'], 'GGG': ['GGA', 'GGG']}
+    for key, value in computed_result.items():
+        assert (sorted(value) == sorted(expected_result[key]))
+    for key, value in expected_result.items():
+        assert sorted(computed_result[key]) == sorted(value)
