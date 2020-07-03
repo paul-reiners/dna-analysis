@@ -110,3 +110,16 @@ def test_construct_de_bruijn_graph_from_k_mers():
         assert (sorted(value) == sorted(expected_result[key]))
     for key, value in expected_result.items():
         assert sorted(computed_result[key]) == sorted(value)
+
+
+def test_construct_de_bruijn_graph_from_k_mers_2():
+    file1 = open('../../../data/bioinformatics_ii/week1/dataset_200_8.txt', 'r')
+    lines = file1.readlines()
+    patterns = [line.strip() for line in lines]
+    calculated_result = construct_de_bruijn_graph_from_k_mers(patterns)
+    out_f = open('../../../data/bioinformatics_ii/week1/dataset_200_8_output.txt', 'w')
+    for key, value in calculated_result.items():
+        if len(value) > 0:
+            output_line = "%s -> %s" % (key, ",".join(value))
+            out_f.write(output_line)
+            out_f.write("\n")
