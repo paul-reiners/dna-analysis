@@ -16,7 +16,10 @@ def get_all_edges(graph):
 
 
 def get_unexplored_edges(unexplored_edges, cycle):
-    pass
+    n = len(cycle)
+    for i in range(n):
+        unexplored_edges.remove([cycle[i], cycle[(i + 1) % n]])
+    return unexplored_edges
 
 
 def get_new_start(cycle, unexplored_edges):
