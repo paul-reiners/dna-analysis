@@ -8,7 +8,7 @@ def get_random_cycle(graph):
     while node not in random_cycle:
         random_cycle.append(node)
         nodes = graph[node]
-        unseen_nodes = [n for n in nodes if n not in random_cycle[1:]]
+        unseen_nodes = [n for n in nodes if n not in random_cycle[1:] or n == random_cycle[0]]
         node = random.choice(unseen_nodes)
     return random_cycle
 
@@ -24,7 +24,7 @@ def get_unexplored_edges(unexplored_edges, cycle):
 
 
 def get_new_start(cycle, unexplored_edges):
-    new_starts = filter(lambda unexplored_edge: unexplored_edge[0] in cycle, unexplored_edges)
+    new_starts = [edge for edge in unexplored_edges if edge[0] in cycle]
 
     return new_starts[0]
 
