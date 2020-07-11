@@ -1,4 +1,4 @@
-from week02.pattern import get_reverse_complement, get_pattern_matches
+from bioinformatics_i.week01.pattern import get_reverse_complement, get_pattern_matches
 
 
 def test_get_reverse_complement():
@@ -8,35 +8,9 @@ def test_get_reverse_complement():
     assert computed_output == expected_output
 
 
-def test_get_reverse_complement_2():
-    file1 = open('../../../data/week01/dataset_3_2.txt', 'r')
-    lines = file1.readlines()
-    pattern = lines[0].strip()
-    computed_output = get_reverse_complement(pattern)
-    print(computed_output)
-
-
 def test_get_pattern_matches():
     pattern = 'ATAT'
     genome = 'GATATATGCATATACTT'
     computed_output = get_pattern_matches(pattern, genome)
     expected_output = [1, 3, 9]
     assert computed_output == expected_output
-
-
-def test_get_pattern_matches_2():
-    file1 = open('../../../data/week01/dataset_3_5.txt', 'r')
-    lines = file1.readlines()
-    pattern = lines[0].strip()
-    genome = lines[1].strip()
-    computed_output = get_pattern_matches(pattern, genome)
-    print(' '.join(map(lambda s: str(s), computed_output)))
-
-
-def test_get_pattern_matches_vibrio_cholerae():
-    file1 = open('../../../data/week01/Vibrio_cholerae.txt', 'r')
-    lines = file1.readlines()
-    pattern = 'CTTGATCAT'
-    vibrio_cholerae_genome = lines[0].strip()
-    computed_output = get_pattern_matches(pattern, vibrio_cholerae_genome)
-    print(' '.join(map(lambda s: str(s), computed_output)))
