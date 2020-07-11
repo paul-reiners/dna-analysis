@@ -1,7 +1,7 @@
 from itertools import product
 
-from week01.hamming import count
-from week01.pattern import get_reverse_complement
+from bioinformatics_i.week01.hamming import count
+from bioinformatics_i.week01.pattern import get_reverse_complement
 
 
 def get_all_k_mers(k):
@@ -47,8 +47,6 @@ def frequent_words_with_mismatches_and_reverse_complements(text, k, d):
     return frequent_words
 
 
-
-
 def get_skew(genome):
     n = len(genome)
     skew = [0] * (n + 1)
@@ -79,22 +77,3 @@ def get_maximum_skew_positions(genome):
     max_skew_pos = list(filter(lambda i: skew[i] == max_skew, range(len(skew))))
 
     return max_skew_pos
-
-
-def main():
-    file1 = open('../data/chapter02/Salmonella_enterica.txt', 'r')
-    lines = file1.readlines()
-    genome = ''.join(map(lambda s: s.strip(), lines[1:]))
-    calculated_output = get_minimum_skew_positions(genome)
-    print(' '.join(map(lambda n: str(n), calculated_output)))
-    L = 1000
-    start = calculated_output[0]
-    text = genome[start: start + L]
-    k = 9
-    d = 1
-    candidates = frequent_words_with_mismatches_and_reverse_complements(text, k, d)
-    print(' '.join(candidates))
-
-
-if __name__ == "__main__":
-    main()
