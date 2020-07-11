@@ -141,3 +141,15 @@ def get_k_universal_circular_string(k):
 def get_binary_strings(k):
     patterns = [''.join(t) for t in list(product('01', repeat=k))]
     return patterns
+
+
+def generate_k_d_mer_composition(text, k, d):
+    k_d_mer_len = 2 * k + d
+    n = len(text)
+    composition = []
+    for i in range(n - k_d_mer_len + 1):
+        k_d_mer = [text[i:i + k], text[i + k + d:i + k_d_mer_len]]
+        composition.append(k_d_mer)
+    composition.sort()
+
+    return composition

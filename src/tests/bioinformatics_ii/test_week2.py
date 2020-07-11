@@ -1,5 +1,5 @@
 from bioinformatics_ii.week2 import get_eulerian_cycle, get_eulerian_path, string_reconstruction, \
-    get_k_universal_circular_string, get_binary_strings
+    get_k_universal_circular_string, get_binary_strings, generate_k_d_mer_composition
 
 
 def test_get_eulerian_cycle():
@@ -48,3 +48,12 @@ def test_get_k_universal_circular_string():
 
                 break
         assert found_pattern
+
+
+def test_generate_k_d_mer_composition():
+    text = 'TAATGCCATGGGATGTT'
+    k = 3
+    d = 2
+    calculated_result = generate_k_d_mer_composition(text, k, d)
+    expected_result = [['AAT', 'CAT'], ['ATG', 'ATG']]
+    assert calculated_result[:2] == expected_result
