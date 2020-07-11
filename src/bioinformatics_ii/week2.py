@@ -1,6 +1,8 @@
 import random
 import copy
 
+from bioinformatics_ii.week1 import construct_de_bruijn_graph_from_k_mers, path_to_genome
+
 
 def get_all_edges(graph):
     return [[i, j] for i in graph.keys() for j in graph[i]]
@@ -116,3 +118,11 @@ def get_eulerian_path(graph):
     eulerian_path = remove_edge(eulerian_cycle, new_edge)
 
     return eulerian_path
+
+
+def string_reconstruction(patterns):
+        d_b = construct_de_bruijn_graph_from_k_mers(patterns)
+        path = get_eulerian_path(d_b)
+        text = path_to_genome(path)
+
+        return text

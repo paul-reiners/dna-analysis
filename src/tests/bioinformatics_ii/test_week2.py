@@ -1,4 +1,4 @@
-from bioinformatics_ii.week2 import get_eulerian_cycle, get_eulerian_path
+from bioinformatics_ii.week2 import get_eulerian_cycle, get_eulerian_path, string_reconstruction
 
 
 def test_get_eulerian_cycle():
@@ -38,7 +38,14 @@ def test_get_eulerian_cycle_2():
 
 
 def test_get_eulerian_path():
-    graph = {0: [2], 1: [3], 2: [1],  3: [0, 4], 6: [3, 7], 7: [8], 8: [9], 9: [6]}
+    graph = {0: [2], 1: [3], 2: [1], 3: [0, 4], 6: [3, 7], 7: [8], 8: [9], 9: [6]}
     computed_result = get_eulerian_path(graph)
     expected_result = [6, 7, 8, 9, 6, 3, 0, 2, 1, 3, 4]
     assert computed_result == expected_result
+
+
+def test_string_reconstruction():
+    patterns = ['CTTA', 'ACCA', 'TACC', 'GGCT', 'GCTT',  'TTAC']
+    calculated_output = string_reconstruction(patterns)
+    expected_result = 'GGCTTACCA'
+    assert calculated_output == expected_result
