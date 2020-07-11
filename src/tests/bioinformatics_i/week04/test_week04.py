@@ -1,14 +1,17 @@
+import random
+
 from bioinformatics_i.week04.week04 import monte_carlo_randomized_motif_search, motifs, get_most_likely_motif, \
     gibbs_sampler_with_restarts
 
 
 def test_monte_carlo_randomized_motif_search():
+    random.seed(30)
     dna = ['CGCCCCTCTCGGGGGTGTTCAGTAAACGGCCA', 'GGGCGAGGTATGTGTAAGTGCCAAGGTGCCAG', 'TAGTACCGAGACCGAAAGAAGTATACAGGCGT',
            'TAGATCAAGTTTCAGGTGCACGTCGGTGAACC', 'AATCCACCAGCTCCACGTGCAATGTTGGCCTA']
     k = 8
     t = 5
     computed_result = monte_carlo_randomized_motif_search(dna, k, t)
-    expected_result = ['TCTCGGGG', 'CCAAGGTG', 'TACAGGCG', 'TTCAGGTG', 'TCCACGTG']
+    expected_result = ['AACGGCCA', 'AAGTGCCA', 'TAGTACCG', 'AAGTTTCA', 'ACGTGCAA']
     assert computed_result == expected_result
 
 
@@ -46,6 +49,7 @@ def test_motifs():
 
 
 def test_gibbs_sampler():
+    random.seed(30)
     dna = ['CGCCCCTCTCGGGGGTGTTCAGTAACCGGCCA', 'GGGCGAGGTATGTGTAAGTGCCAAGGTGCCAG', 'TAGTACCGAGACCGAAAGAAGTATACAGGCGT',
            'TAGATCAAGTTTCAGGTGCACGTCGGTGAACC', 'AATCCACCAGCTCCACGTGCAATGTTGGCCTA']
     k = 8
