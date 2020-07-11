@@ -1,4 +1,4 @@
-from itertools import permutations, product
+from itertools import permutations
 
 
 def composition(text, k):
@@ -20,14 +20,6 @@ def overlap_graph(patterns):
             graph[combo[0]].append(combo[1])
 
     return graph
-
-
-def construct_k_universal_string(k):
-    k_mers = [''.join(p) for p in product('01', repeat=k)]
-    k_mer_permutations = permutations(k_mers)
-    for k_mer_permutation in k_mer_permutations:
-        if all([k_mer_permutation[i][1:] == k_mer_permutation[i + 1][:-1] for i in range(len(k_mer_permutation) - 1)]):
-            return path_to_genome(k_mer_permutation)
 
 
 def construct_de_bruijn_graph(k, text):

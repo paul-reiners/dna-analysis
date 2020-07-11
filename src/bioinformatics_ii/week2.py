@@ -2,7 +2,7 @@ import random
 import copy
 from itertools import product
 
-from bioinformatics_ii.week1 import construct_de_bruijn_graph_from_k_mers, path_to_genome
+from bioinformatics_ii.week1 import path_to_genome, construct_de_bruijn_graph_from_k_mers
 
 
 def get_all_edges(graph):

@@ -1,7 +1,8 @@
 from itertools import product
 
-from bioinformatics_ii.week1 import composition, path_to_genome, overlap_graph, construct_k_universal_string, \
+from bioinformatics_ii.week1 import composition, path_to_genome, overlap_graph, \
     construct_de_bruijn_graph, construct_de_bruijn_graph_from_k_mers
+from bioinformatics_ii.week2 import get_k_universal_circular_string, get_binary_strings
 
 
 def test_composition():
@@ -12,30 +13,11 @@ def test_composition():
     assert calculated_result == sorted(expected_result)
 
 
-def test_composition_2():
-    file1 = open('../../../data/bioinformatics_ii/week1/dataset_197_3.txt', 'r')
-    lines = file1.readlines()
-    k = int(lines[0].strip())
-    text = lines[1].strip()
-    calculated_result = composition(text, k)
-    print('\n'.join(calculated_result))
-    with open('../../../data/bioinformatics_ii/week1/dataset_197_3-OUTPUT.txt', 'w') as f:
-        print('\r\n'.join(calculated_result), file=f, flush=True)
-
-
 def test_string_spelled_genome_path():
     patterns = ['ACCGA', 'CCGAA', 'CGAAG', 'GAAGC', 'AAGCT']
     calculated_result = path_to_genome(patterns)
     expected_result = 'ACCGAAGCT'
     assert calculated_result == expected_result
-
-
-def test_path_to_genome():
-    file1 = open('../../../data/bioinformatics_ii/week1/dataset_198_3.txt', 'r')
-    lines = file1.readlines()
-    patterns = [line.strip() for line in lines]
-    calculated_result = path_to_genome(patterns)
-    print(calculated_result)
 
 
 def test_overlap_graph():
@@ -51,29 +33,38 @@ def test_overlap_graph():
         assert sorted(calculated_output[key]) == sorted(value)
 
 
-def test_overlap_graph_2():
-    file1 = open('../../../data/bioinformatics_ii/week1/dataset_198_10.txt', 'r')
-    lines = file1.readlines()
-    patterns = [line.strip() for line in lines]
-    calculated_result = overlap_graph(patterns)
-    out_f = open('../../../data/bioinformatics_ii/week1/dataset_198_10_output.txt', 'w')
-    for key, value in calculated_result.items():
-        if len(value) > 0:
-            output_line = "%s->%s" % (key, ",".join(value))
-            out_f.write(output_line)
-            out_f.write("\n")
-
-
 def test_construct_3_universal_string():
-    result = construct_k_universal_string(3)
-    all_3_mers = [''.join(p) for p in product('01', repeat=3)]
-    for three_mer in all_3_mers:
-        assert result.count(three_mer) == 1
+    k = 3
+    result = get_k_universal_circular_string(k)
+    n = 8
+    assert n == len(result)
+    patterns = get_binary_strings(k)
+    for pattern in patterns:
+        found_pattern = False
+        for i in range(n):
+            rotation = result[i:] + result[:i]
+            if pattern in rotation:
+                found_pattern = True
+
+                break
+        assert found_pattern
 
 
 def test_construct_4_universal_string():
-    result = construct_k_universal_string(4)
-    assert result == '0000100110101111000'
+    k = 4
+    result = get_k_universal_circular_string(k)
+    n = 16
+    assert n == len(result)
+    patterns = get_binary_strings(k)
+    for pattern in patterns:
+        found_pattern = False
+        for i in range(n):
+            rotation = result[i:] + result[:i]
+            if pattern in rotation:
+                found_pattern = True
+
+                break
+        assert found_pattern
 
 
 def test_construct_de_bruijn_graph():
@@ -88,20 +79,6 @@ def test_construct_de_bruijn_graph():
         assert sorted(computed_result[key]) == sorted(value)
 
 
-def test_construct_de_bruijn_graph_2():
-    file1 = open('../../../data/bioinformatics_ii/week1/dataset_199_6.txt', 'r')
-    lines = file1.readlines()
-    k = int(lines[0].strip())
-    text = lines[1].strip()
-    calculated_result = construct_de_bruijn_graph(k, text)
-    out_f = open('../../../data/bioinformatics_ii/week1/dataset_199_6_output.txt', 'w')
-    for key, value in calculated_result.items():
-        if len(value) > 0:
-            output_line = "%s -> %s" % (key, ",".join(value))
-            out_f.write(output_line)
-            out_f.write("\n")
-
-
 def test_construct_de_bruijn_graph_from_k_mers():
     patterns = ['GAGG', 'CAGG', 'GGGG', 'GGGA', 'CAGG', 'AGGG', 'GGAG']
     computed_result = construct_de_bruijn_graph_from_k_mers(patterns)
@@ -110,16 +87,3 @@ def test_construct_de_bruijn_graph_from_k_mers():
         assert (sorted(value) == sorted(expected_result[key]))
     for key, value in expected_result.items():
         assert sorted(computed_result[key]) == sorted(value)
-
-
-def test_construct_de_bruijn_graph_from_k_mers_2():
-    file1 = open('../../../data/bioinformatics_ii/week1/dataset_200_8.txt', 'r')
-    lines = file1.readlines()
-    patterns = [line.strip() for line in lines]
-    calculated_result = construct_de_bruijn_graph_from_k_mers(patterns)
-    out_f = open('../../../data/bioinformatics_ii/week1/dataset_200_8_output.txt', 'w')
-    for key, value in calculated_result.items():
-        if len(value) > 0:
-            output_line = "%s -> %s" % (key, ",".join(value))
-            out_f.write(output_line)
-            out_f.write("\n")
