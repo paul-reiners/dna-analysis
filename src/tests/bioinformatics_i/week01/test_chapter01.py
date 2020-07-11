@@ -57,8 +57,8 @@ def test_computing_frequencies():
 def test_better_clump_finding():
     genome = 'CGGACTCGACAGATGTGAAGAACGACAATGTGAAGACTCGACACGACAGAGTGAAGAGAAGAGGAAACATTGTAA'
     k = 5
-    L = 50
+    l = 50
     t = 4
-    calculated_output = better_clump_finding(genome, k, t, L)
+    calculated_output = better_clump_finding(genome, k, t, l)
     expected_output = {'CGACA', 'GAAGA'}
     assert expected_output == calculated_output

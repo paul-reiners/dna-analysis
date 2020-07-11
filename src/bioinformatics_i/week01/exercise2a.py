@@ -1,5 +1,5 @@
-from week02.neighbors import neighbors
-from section01.hamming import approximate_pattern_count
+from bioinformatics_i.week01.hamming import approximate_pattern_count
+from bioinformatics_i.week01.neighbors import neighbors
 
 
 def motif_enumeration(dna, k, d):

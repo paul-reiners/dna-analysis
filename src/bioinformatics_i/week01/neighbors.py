@@ -1,6 +1,6 @@
 # coding=utf-8
-from phix174.phiX174_error_free_overlap import suffix
-from section01.hamming import hamming_distance
+from bioinformatics_i.week01.hamming import hamming_distance
+from bioinformatics_i.week01.phiX174_error_free_overlap import suffix
 
 nucleotides = {'A', 'C', 'G', 'T'}
 
