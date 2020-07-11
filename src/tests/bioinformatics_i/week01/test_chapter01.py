@@ -1,4 +1,5 @@
-from week01.chapter01 import pattern_to_number, number_to_pattern, computing_frequencies, better_clump_finding
+from bioinformatics_i.week01.chapter01 import pattern_to_number, number_to_pattern, computing_frequencies, \
+    better_clump_finding
 
 
 def test_pattern_to_number():
@@ -53,24 +54,6 @@ def test_computing_frequencies():
     assert computed_result == expected_output
 
 
-def test_get_computing_frequencies_2():
-    file1 = open('../../../data/week01/dataset_2994_5.txt', 'r')
-    lines = file1.readlines()
-    text = lines[0].strip()
-    k = int(lines[1].strip())
-    computed_result = computing_frequencies(text, k)
-    print(' '.join(map(lambda s: str(s), computed_result)))
-
-
-def test_pattern_to_number_4():
-    file1 = open('../../../data/week01/dataset_3010_2.txt', 'r')
-    lines = file1.readlines()
-    pattern = lines[0].strip()
-    computed_result = pattern_to_number(pattern)
-    expected_result = 61002248781
-    assert computed_result == expected_result
-
-
 def test_better_clump_finding():
     genome = 'CGGACTCGACAGATGTGAAGAACGACAATGTGAAGACTCGACACGACAGAGTGAAGAGAAGAGGAAACATTGTAA'
     k = 5
@@ -79,25 +62,3 @@ def test_better_clump_finding():
     calculated_output = better_clump_finding(genome, k, t, L)
     expected_output = {'CGACA', 'GAAGA'}
     assert expected_output == calculated_output
-
-
-def test_better_clump_finding_2():
-    file1 = open('../../../data/week01/dataset_4_5.txt', 'r')
-    lines = file1.readlines()
-    genome = lines[0].strip()
-    k = 9
-    L = 27
-    t = 4
-    calculated_output = better_clump_finding(genome, k, t, L)
-    print(' '.join(map(lambda s: str(s), calculated_output)))
-
-
-def test_better_clump_finding_e_coli():
-    file1 = open('../../../data/week01/E_coli.txt', 'r')
-    lines = file1.readlines()
-    genome = lines[0].strip()
-    k = 9
-    L = 500
-    t = 3
-    calculated_output = better_clump_finding(genome, k, t, L)
-    print(len(calculated_output))
