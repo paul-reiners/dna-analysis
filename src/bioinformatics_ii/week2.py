@@ -121,8 +121,8 @@ def get_eulerian_path(graph):
 
 
 def string_reconstruction(patterns):
-        d_b = construct_de_bruijn_graph_from_k_mers(patterns)
-        path = get_eulerian_path(d_b)
-        text = path_to_genome(path)
+    d_b = construct_de_bruijn_graph_from_k_mers(patterns)
+    path = get_eulerian_path(d_b)
+    text = path_to_genome(path)
 
-        return text
+    return text

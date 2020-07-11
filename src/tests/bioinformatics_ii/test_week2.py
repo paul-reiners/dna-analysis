@@ -1,4 +1,4 @@
-from bioinformatics_ii.week2 import get_eulerian_cycle, get_eulerian_path, string_reconstruction
+from bioinformatics_ii.week2 import get_eulerian_cycle, get_eulerian_path, string_reconstruction, get_unique_rotations
 
 
 def test_get_eulerian_cycle():
@@ -26,7 +26,7 @@ def test_get_eulerian_path():
 
 
 def test_string_reconstruction():
-    patterns = ['CTTA', 'ACCA', 'TACC', 'GGCT', 'GCTT',  'TTAC']
+    patterns = ['CTTA', 'ACCA', 'TACC', 'GGCT', 'GCTT', 'TTAC']
     calculated_output = string_reconstruction(patterns)
     expected_result = 'GGCTTACCA'
     assert calculated_output == expected_result
