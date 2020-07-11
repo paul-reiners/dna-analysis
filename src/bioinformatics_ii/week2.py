@@ -1,4 +1,5 @@
 import random
+import copy
 
 
 def get_all_edges(graph):
@@ -71,3 +72,47 @@ def get_eulerian_cycle(graph):
     eulerian_cycle = splice_all_cycles(cycles)
 
     return eulerian_cycle
+
+
+def add_edge(graph, new_edge):
+    source = new_edge[0]
+    if source not in graph:
+        graph[source] = []
+    graph[source].append(new_edge[1])
+
+    return graph
+
+
+def remove_edge(eulerian_cycle, edge):
+    idx = eulerian_cycle.index(edge[1])
+    new_path = eulerian_cycle[idx:] + eulerian_cycle[:idx]
+
+    return new_path
+
+
+def get_eulerian_path(graph):
+    all_edges = get_all_edges(graph)
+    degree_counts = {}
+    for edge in all_edges:
+        source = edge[0]
+        if source not in degree_counts:
+            degree_counts[source] = [0, 0]
+        degree_counts[source] = [degree_counts[source][0] + 1, degree_counts[source][1]]
+        destination = edge[1]
+        if destination not in degree_counts:
+            degree_counts[destination] = [0, 0]
+        degree_counts[destination] = [degree_counts[destination][0], degree_counts[destination][1] + 1]
+    new_source = None
+    new_destination = None
+    for node in degree_counts:
+        degree_node_counts = degree_counts[node]
+        if degree_node_counts[0] == degree_node_counts[1] - 1:
+            new_source = node
+        elif degree_node_counts[1] == degree_node_counts[0] - 1:
+            new_destination = node
+    new_edge = [new_source, new_destination]
+    expanded_graph = add_edge(copy.deepcopy(graph), new_edge)
+    eulerian_cycle = get_eulerian_cycle(expanded_graph)
+    eulerian_path = remove_edge(eulerian_cycle, new_edge)
+
+    return eulerian_path

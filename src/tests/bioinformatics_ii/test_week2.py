@@ -1,5 +1,4 @@
-from bioinformatics_ii.week2 import get_eulerian_cycle
-from collections import deque
+from bioinformatics_ii.week2 import get_eulerian_cycle, get_eulerian_path
 
 
 def test_get_eulerian_cycle():
@@ -10,7 +9,7 @@ def test_get_eulerian_cycle():
     assert len(computed_result) == n
     found = False
     for i in range(n):
-        rotation =  expected_result[i:] + expected_result[:i]
+        rotation = expected_result[i:] + expected_result[:i]
         if rotation == computed_result:
             found = True
 
@@ -36,3 +35,10 @@ def test_get_eulerian_cycle_2():
     output_line = '->'.join([str(n) for n in calculated_result])
     out_f.write(output_line)
     out_f.write("\n")
+
+
+def test_get_eulerian_path():
+    graph = {0: [2], 1: [3], 2: [1],  3: [0, 4], 6: [3, 7], 7: [8], 8: [9], 9: [6]}
+    computed_result = get_eulerian_path(graph)
+    expected_result = [6, 7, 8, 9, 6, 3, 0, 2, 1, 3, 4]
+    assert computed_result == expected_result
