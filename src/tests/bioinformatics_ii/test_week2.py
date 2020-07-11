@@ -1,4 +1,5 @@
-from bioinformatics_ii.week2 import get_eulerian_cycle, get_eulerian_path, string_reconstruction, get_unique_rotations
+from bioinformatics_ii.week2 import get_eulerian_cycle, get_eulerian_path, string_reconstruction, \
+    get_k_universal_circular_string, get_binary_strings
 
 
 def test_get_eulerian_cycle():
@@ -30,3 +31,20 @@ def test_string_reconstruction():
     calculated_output = string_reconstruction(patterns)
     expected_result = 'GGCTTACCA'
     assert calculated_output == expected_result
+
+
+def test_get_k_universal_circular_string():
+    k = 4
+    computed_result = get_k_universal_circular_string(k)
+    n = 16
+    assert n == len(computed_result)
+    patterns = get_binary_strings(k)
+    for pattern in patterns:
+        found_pattern = False
+        for i in range(n):
+            rotation = computed_result[i:] + computed_result[:i]
+            if pattern in rotation:
+                found_pattern = True
+
+                break
+        assert found_pattern

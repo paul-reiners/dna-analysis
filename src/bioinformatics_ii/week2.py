@@ -1,5 +1,6 @@
 import random
 import copy
+from itertools import product
 
 from bioinformatics_ii.week1 import construct_de_bruijn_graph_from_k_mers, path_to_genome
 
@@ -126,3 +127,17 @@ def string_reconstruction(patterns):
     text = path_to_genome(path)
 
     return text
+
+
+def get_k_universal_circular_string(k):
+    patterns = get_binary_strings(k)
+    d_b = construct_de_bruijn_graph_from_k_mers(patterns)
+    cycle = get_eulerian_cycle(d_b)
+    k_universal_circular_string = ''.join([cycle[i][-1] for i in range(len(cycle))])
+
+    return k_universal_circular_string
+
+
+def get_binary_strings(k):
+    patterns = [''.join(t) for t in list(product('01', repeat=k))]
+    return patterns
