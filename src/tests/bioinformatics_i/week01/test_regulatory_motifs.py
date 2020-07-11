@@ -1,5 +1,5 @@
-from week01.regulatory_motifs import d, motif_d, get_median_strings, pr, compute_entropy, get_consensus_strings, \
-    count, score, profile, count_with_pseudocounts, profile_with_pseudocounts
+from bioinformatics_i.week01.regulatory_motifs import motif_d, get_median_strings, pr, compute_entropy, \
+    get_consensus_strings, count, profile, score, count_with_pseudocounts, profile_with_pseudocounts, d
 
 
 def test_d():
@@ -28,19 +28,8 @@ def test_get_median_strings_2():
               'GCAATCCTACCCGAGGCCACATATCAGTAGGAACTAGAACCACCACGGGTGGCTAGTTTC',
               'GGTGTTGAACCACGGGGTTAGTTTCATCTATTGTAGGAATCGGCTTCAAATCCTACACAG'}
     computed_median_strings = set(get_median_strings(7, motifs))
-    expected_median_strings = {'AATCCTA', 'GAACCAC', 'GTAGGAA'}
+    expected_median_strings = {'GTAGGAA', 'GAACCAC', 'AATCCTA', 'TAGTTTC'}
     assert computed_median_strings == expected_median_strings
-
-
-def test_pr():
-    prfl = {
-        'A': [0.4, 0.3, 0.0, 0.1, 0.0, 0.9],
-        'C': [0.2, 0.3, 0.0, 0.4, 0.0, 0.1],
-        'G': [0.1, 0.3, 1.0, 0.1, 0.5, 0.0],
-        'T': [0.3, 0.1, 0.0, 0.4, 0.5, 0.0]
-    }
-    result = pr('CAGTGA', prfl)
-    print(result)
 
 
 def test_pr_2():
@@ -147,15 +136,6 @@ def test_score():
     computed_result = score(motifs)
     expected_result = 9.916290005356972
     assert abs(computed_result - expected_result) < 0.1
-
-
-def test_get_median_strings_3():
-    file1 = open('../../../data/week01/dataset_158_9.txt', 'r')
-    lines = file1.readlines()
-    k = int(lines[0].strip())
-    motifs = list(map(lambda s: s.strip(), lines[1:]))
-    computed_output = get_median_strings(k, motifs)
-    print(' '.join(map(lambda s: str(s), computed_output)))
 
 
 def test_count_with_pseudocounts():
