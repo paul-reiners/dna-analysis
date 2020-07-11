@@ -1,7 +1,7 @@
 import random
 
-from week01.hamming import hamming_distance
-from week01.regulatory_motifs import profile_with_pseudocounts, get_consensus_strings
+from bioinformatics_i.week01.hamming import hamming_distance
+from bioinformatics_i.week01.regulatory_motifs import profile_with_pseudocounts, get_consensus_strings
 
 
 def monte_carlo_randomized_motif_search(dna, k, t):
