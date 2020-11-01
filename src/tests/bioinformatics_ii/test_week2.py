@@ -1,5 +1,5 @@
 from bioinformatics_ii.week2 import get_eulerian_cycle, get_eulerian_path, string_reconstruction, \
-    get_k_universal_circular_string, get_binary_strings, generate_k_d_mer_composition
+    get_k_universal_circular_string, get_binary_strings, generate_k_d_mer_composition, string_spelled_by_gapped_patterns
 
 
 def test_get_eulerian_cycle():
@@ -57,3 +57,17 @@ def test_generate_k_d_mer_composition():
     calculated_result = generate_k_d_mer_composition(text, k, d)
     expected_result = [['AAT', 'CAT'], ['ATG', 'ATG']]
     assert calculated_result[:2] == expected_result
+
+
+def test_string_spelled_by_gapped_patterns():
+    k = 4
+    d = 2
+    gapped_patterns = \
+        [['GACC', 'GCGC'],
+         ['ACCG', 'CGCC'],
+         ['CCGA', 'GCCG'],
+         ['CGAG', 'CCGG'],
+         ['GAGC', 'CGGA']]
+    expected_result = 'GACCGAGCGCCGGA'
+    actual_result = string_spelled_by_gapped_patterns(gapped_patterns, k, d)
+    assert expected_result == actual_result

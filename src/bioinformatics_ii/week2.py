@@ -153,3 +153,14 @@ def generate_k_d_mer_composition(text, k, d):
     composition.sort()
 
     return composition
+
+
+def string_spelled_by_gapped_patterns(gapped_patterns, k, d):
+    first_patterns = [p[0] for p in gapped_patterns]
+    second_patterns = [p[1] for p in gapped_patterns]
+    prefix_string = path_to_genome(first_patterns)
+    suffix_string = path_to_genome(second_patterns)
+    for i in range(k + d + 1, len(prefix_string)):
+        if prefix_string[i] != suffix_string[i - k - d]:
+            return "there is no string spelled by the gapped patterns"
+    return prefix_string + suffix_string[-(k + d):]
